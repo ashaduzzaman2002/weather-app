@@ -31,6 +31,7 @@ const weatherDetails = document.querySelector('.weather_details_box')
 const serachInput = document.getElementById('serachInput')
 const forecastBox = document.querySelector('.forecast_box')
 
+document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),  url('images/${isDay}/cloudy.jpg')`;
 
 // Data and months list 
 let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sutarday']
