@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;1,400&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+h1, h3{
+    font-weight: 400;
+}
+body{
+    scroll-behavior: smooth;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.weather_app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.result{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3% 3% 7% 6%;
+}
+
+.weather{
+    display: flex;
+    align-items: center;
+}
+
+.result h3{
+    font-size: 1.1rem;
+}
+.weather_icon{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 1.5rem;
+}
+.weather_icon small {
+    margin-top: -10px;
+    color: rgb(235, 232, 232);
+}
+
+.temp{
+    font-size: 5.5rem;
+}
+
+.date{
+    padding-left: 5px;
+}
+.city_time{
+    margin-left: 0.5rem;
+    color: rgb(235, 232, 232);
+}
+.city_time h1{
+    margin-bottom: -5px;
+    color: #fff;
+}
+
+
+.side_bar{
+    width: 35%;
+    height: 100%;
+    background: rgba(110, 110, 110, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 3em 2em;
+}
+
+
+#searchBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.5em;
+    margin: 0;
+    outline: none;
+    border: none;
+    background: #fa6d1b;
+    cursor: pointer;
+    transition: 0.45s;
+}
+
+#searchBtn:hover{
+    background: #f89962;
+}
+
+#serachInput{
+    background: none;
+    border: none;
+    border-bottom: 1px #ccc solid; 
+    padding: 0 1em 0.3em 0;
+    width: 80%;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+#serachInput:focus{
+    outline: none;
+}
+
+#serachInput::placeholder{
+    color: #ccc;
+}
+
+.weather_details, .forecast{
+    border-bottom: 1px #ccc solid;
+    padding-bottom: 3rem;
+    margin-top: 3rem;
+    width: 90%;
+}
+
+.weather_details h3, .forecast h3{
+    margin-bottom: 1.5rem;
+}
+
+.weather_details ul, .forecast ul{
+    width: 90%;
+}
+
+.weather_details ul li, .forecast ul li{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-top: 1.5rem;
+    color: #ccc;
+}
+
+
+@media screen and (max-width: 750px) {
+    body{
+        height: auto;
+    }
+    .weather_app {
+        flex-direction: column;
+    }
+
+    .result{
+        width: 100%;
+        height: 33vh;
+        padding: 5%;
+    }
+    
+    .weather_icon{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-left: 1.5rem;
+    }
+    .weather_icon small {
+        margin-top: -10px;
+        color: rgb(235, 232, 232);
+    }
+    
+    .temp{
+        font-size: 5.5rem;
+    }
+    
+    .date{
+        padding-left: 5px;
+    }
+    .city_time{
+        margin-left: 0.5rem;
+        color: rgb(235, 232, 232);
+    }
+    .city_time h1{
+        margin-bottom: -5px;
+        color: #fff;
+    }
+    
+    
+    .side_bar{
+        width: 100%;
+        height: 60%;
+        background: rgba(110, 110, 110, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 3em 2em;
+    }
+    
+    
+    #searchBtn{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1.5em;
+        margin: 0;
+        outline: none;
+        border: none;
+        background: #fa6d1b;
+        cursor: pointer;
+        transition: 0.45s;
+    }
+    
+    #searchBtn:hover{
+        background: #f89962;
+    }
+    
+    #serachInput{
+        background: none;
+        border: none;
+        border-bottom: 1px #ccc solid; 
+        padding: 0 1em 0.3em 0;
+        width: 80%;
+        color: #fff;
+        font-size: 1.1em;
+    }
+    
+    #serachInput:focus{
+        outline: none;
+    }
+    
+    #serachInput::placeholder{
+        color: #ccc;
+    }
+    
+    .weather_details, .forecast{
+        border-bottom: 1px #ccc solid;
+        padding-bottom: 3rem;
+        margin-top: 3rem;
+        width: 90%;
+    }
+    
+    .weather_details h3, .forecast h3{
+        margin-bottom: 1.5rem;
+    }
+    
+    .weather_details ul, .forecast ul{
+        width: 90%;
+    }
+    
+    .weather_details ul li, .forecast ul li{
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        margin-top: 1.5rem;
+        color: #ccc;
+    }
+}
