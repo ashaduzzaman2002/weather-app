@@ -16,7 +16,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),  url('images/day/cloudy.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),  url('images/day/clear.jpg');
 }
 
 .weather_app {
