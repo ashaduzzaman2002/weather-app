@@ -1,35 +1,3 @@
-// Api key 
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '644a632a82msha1903bea456c7c6p1bb6b6jsn2f02771939d0',
-    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-  }
-};
-
-
-// get data function 
-const getData = (city) => {
-
-  return (fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${city}`, options)
-    .then(response => response.json())
-    .then(data => data)
-    .catch(err => {
-      weather.innerHTML = `${err.message}`
-    }));
-}
-
-
-const getForecast = (city, date) => {
-  return (fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=3&dt=${date}`, options)
-    .then(response => response.json())
-    .then(data => data)
-    .catch(err => {
-      weather.innerHTML = `${err.message}`
-    }));
-}
-
-
 // All query selectors
 const weather = document.querySelector('.weather')
 const searchBtn = document.getElementById('searchBtn')
@@ -44,8 +12,29 @@ const humidity = document.getElementById('humadity')
 const wind = document.getElementById('wind')
 
 
+// Api key 
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '644a632a82msha1903bea456c7c6p1bb6b6jsn2f02771939d0',
+    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+  }
+};
 
-// Data and months list 
+
+// get data function 
+const getData = (city) => {
+
+  return (fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}`, options)
+    .then(response => response.json())
+    .then(data => data)
+    .catch(err => {
+      weather.innerHTML = `${err.message}`
+    }));
+}
+
+
+// Days and months list 
 let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sutarday']
 let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -133,7 +122,6 @@ const showData = async (data) => {
   console.log(data)
   let time = data.location.localtime.split(' ')[1]
   let date = formatDate(data.location.localtime.split(' ')[0])
-  let location = data.location.name
   const d = new Date(date);
   let day = days[d.getDay()]
   let mm = months[d.getMonth()];
@@ -143,14 +131,9 @@ const showData = async (data) => {
   let iconUrl = data.current.condition.icon.split('/')
   let icon = iconUrl[iconUrl.length - 1]
   let isDay = setCondition(data)
-  console.log(location)
-  let forecast = await getForecast(location,'date')
-  let forecastData = forecast.forecast.forecastday[0].day
-  console.log(forecast)
+  let forecast = data.forecast.forecastday[0].day
 
-  weather.innerHTML = `<div id="lds-ring"><div></div><div></div><div></div><div></div></div>`
-  setTimeout(() => {
-    weather.innerHTML = `<h1 class="temp">${temp}&#176;</h1>
+  weather.innerHTML = `<h1 class="temp">${temp}&#176;</h1>
     <div class="city_time">
       <h1 class="name">${data.location.name}</h1>
       <small>
@@ -169,20 +152,23 @@ const showData = async (data) => {
       <small class="condition">${condition}</small>
     </div>`
 
+    console.log(forecast)
   cloudy.innerText = `${data.current.cloud}%`
   humidity.innerText = `${data.current.humidity}%`
   wind.innerText = `${data.current.wind_kph}km/h`
 
-  minTemp.innerText = `${forecastData.mintemp_c}°`
-  conditionDetails.innerText = `${forecastData.condition.text}`
-  maxTemp.innerText = `${forecastData.maxtemp_c}°`
-  },500)
+  minTemp.innerText = `${forecast.mintemp_c}°`
+  conditionDetails.innerText = `${forecast.condition.text}`
+  maxTemp.innerText = `${forecast.maxtemp_c}°`
 }
 
 
 searchBtn.onclick = async () => {
+  searchBtn.innerHTML = `<div id="lds-ring"><div></div><div></div><div></div><div></div></div>`
+  setTimeout(() => {
+    searchBtn.innerHTML = `<img src="images/search.svg" alt="" />`
+  },1500)
   let city = serachInput.value
   let data = await getData(city)
-  console.log(data)
   showData(data)
 }
